@@ -14,9 +14,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Build the maven package     
-         run: mvn --batch-mode --update-snapshots package
+        run: mvn --batch-mode --update-snapshots package
       - name: package the build artifact   
-         run: mkdir staging && cp target/*.jar staging
+        run: mkdir staging && cp target/*.jar staging
       - uses: actions/upload-artifact@v3
         with:
           name: Package
