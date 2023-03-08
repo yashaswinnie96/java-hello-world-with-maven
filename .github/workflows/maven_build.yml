@@ -21,10 +21,5 @@ jobs:
         with:
           name: Package
           path: staging
-      - id: get_artifact
-        name: Get Artifact Path
-        run: |-
-          # Find the largest WAR or JAR, and assume that was what we intended to build.
-          echo "::set-output name=artifact::$(find target -type f \( -iname \*.jar -o -iname \*.war \) -printf "%p\n" | sort -n | head -1)"
-        shell: bash
-
+      - name: deploy artifact to tomcat
+        run: curl -v -u admin:admin -T target/*.jar 'http://192.168.1.94:8080//manager/text/deploy?path=target/*.jar&update=true'
