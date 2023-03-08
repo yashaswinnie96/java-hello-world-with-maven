@@ -21,5 +21,3 @@ jobs:
         with:
           name: Package
           path: staging
-      - name: deploy artifact to tomcat
-        run: curl -v -u admin:admin -T target/*.jar 'http://192.168.1.94:8080//manager/text/deploy?path=target/*.jar&update=true'
